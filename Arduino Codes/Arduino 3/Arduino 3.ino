@@ -2,8 +2,8 @@
 SoftwareSerial softSerial1(0, 1);
 SoftwareSerial softSerial2(4, 5);
 
-#define TOTAL_SLOTS 1
-int slotPinNumbers[] = {7};
+#define TOTAL_SLOTS 2
+int slotPinNumbers[] = {7, 8};
 
 void setup() 
 {
@@ -33,5 +33,5 @@ void loop()
   softSerial1.print("Arduino 3: " + slotString); // offset = 11
   //if(count == TOTAL_SLOTS)
   softSerial2.print("Arduino 3: " + String(count == TOTAL_SLOTS)); 
-  delay(3000);
+  //delay(3000);
 }
