@@ -2,8 +2,8 @@
 SoftwareSerial softSerial1(0, 1);
 SoftwareSerial softSerial2(4, 5);
 
-#define TOTAL_SLOTS 2
-int slotPinNumbers[] = {7, 8};
+#define TOTAL_SLOTS 1
+int slotPinNumbers[] = {7};
 
 void setup() 
 {

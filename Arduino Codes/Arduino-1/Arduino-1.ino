@@ -101,8 +101,8 @@ void loop()
       long endTime = millis();
       double totalTime = (endTime-startTime)/1000.0;
       double bill = totalTime*billPerSec;
-      Serial.println(totalTime);
-      Serial.println(bill);
+      Serial.println(totalTime + " seconds");
+      Serial.println(bill + " tk");
       temp->setActive(false);
     }    
     else
