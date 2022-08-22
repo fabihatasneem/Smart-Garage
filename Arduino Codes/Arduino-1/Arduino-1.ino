@@ -63,7 +63,7 @@ void loop()
     String temp = softSerial3.readString();
     //Serial.println(temp);
     String slotString = temp.substring(11);
-    //Serial.println(slotString);
+    Serial.println(slotString);
     showSlot(slotString);
   }
  
@@ -110,7 +110,7 @@ void loop()
       temp->setStartTime(millis());
       temp->setActive(true);
     }
-    delay(3000);
+    delay(5000);
     break;
   }
 }

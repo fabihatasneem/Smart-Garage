@@ -30,10 +30,10 @@ void loop()
 
   servo.write(110); // lifting the gate down
 
-  if(softSerial3.available())
-  {
-    String slotFullStatus = softSerial3.readString().substring(11);
-    if(slotFullStatus == "1")
-      delay(15000);
-  }
+  // if(softSerial3.available())
+  // {
+  //   String slotFullStatus = softSerial3.readString().substring(11);
+  //   if(slotFullStatus == "1")
+  //     delay(15000);
+  // }
 }

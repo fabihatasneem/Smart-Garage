@@ -33,5 +33,5 @@ void loop()
   softSerial1.print("Arduino 3: " + slotString); // offset = 11
   //if(count == TOTAL_SLOTS)
   softSerial2.print("Arduino 3: " + String(count == TOTAL_SLOTS)); 
-  //delay(3000);
+  delay(3000);
 }
