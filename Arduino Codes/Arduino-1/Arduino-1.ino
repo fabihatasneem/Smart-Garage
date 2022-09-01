@@ -18,7 +18,7 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
 int totalRfid = 4;
 MyClass* allRfid[] = { new MyClass("C0 B6 0B 32"), new MyClass("59 D6 A0 D5"), new MyClass("C3 75 56 40"), new MyClass("59 EB B0 D5") };
 MyClass* temp;
-double billPerSec = 10;
+double billPerSec = 2;
  
 void showSlot(String slotString)
 {
@@ -29,13 +29,13 @@ void showSlot(String slotString)
     if(slotString[slot] == '1')
     {
       lcd.print("Slot " + String(slot+1) + ": Occ"); // Occ => Occupied
-      Serial.println("Slot " + String(slot+1) + ": Occ");
+      //Serial.println("Slot " + String(slot+1) + ": Occ");
       delay(100);      
     }
     else
     {
       lcd.print("Slot " + String(slot+1) + ": Emp"); // Emp => Empty
-      Serial.println("Slot " + String(slot+1) + ": Emp");
+      //Serial.println("Slot " + String(slot+1) + ": Emp");
       delay(100);
     }
   }
@@ -62,8 +62,8 @@ void loop()
   {
     String temp = softSerial3.readString();
     //Serial.println(temp);
-    String slotString = temp.substring(11);
-    Serial.println(slotString);
+    String slotString = temp.substring(11, 12);
+    //Serial.println(slotString);
     showSlot(slotString);
   }
  
@@ -74,7 +74,7 @@ void loop()
   if (!mfrc522.PICC_ReadCardSerial())
     return;
   //Show UID on serial monitor
-  Serial.print("UID tag: ");
+  Serial.print("RFID tag: ");
   String content;
   byte letter;
   for (byte i = 0; i < mfrc522.uid.size; i++)
@@ -101,8 +101,11 @@ void loop()
       long endTime = millis();
       double totalTime = (endTime-startTime)/1000.0;
       double bill = totalTime*billPerSec;
-      Serial.println(totalTime + " seconds");
-      Serial.println(bill + " tk");
+      Serial.println("Time: " + String(totalTime) + " seconds");
+      Serial.println("Bill: " + String(bill) + " tk");
+      lcd.setCursor(2, 1);
+      lcd.print("Time: " + String(totalTime) + " seconds");
+      lcd.print("Bill: " + String(bill) + " tk");          
       temp->setActive(false);
     }    
     else
